@@ -13,7 +13,7 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    //const channel = await rabbitPromise();
+    const channel = await rabbitPromise();
     /*let message = await channel.get("musicstore",{'noAck':true});
     while (message) {
       const request = message.content;
