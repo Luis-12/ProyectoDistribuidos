@@ -19,6 +19,7 @@ exports.handler = async (event, context) => {
       const request = message.content;
       switch (request.method) {
         case "INSERT":
+          console.log("message");
           await fetch(url+'insertTrackBatch', {
             headers: {"Content-type": "multipart/form-data"},
             method: "POST",body: request.body});
