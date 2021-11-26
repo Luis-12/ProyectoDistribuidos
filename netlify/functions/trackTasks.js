@@ -3,6 +3,7 @@
 const rabbitPromise = require('./rabbitMQ');
 
 const headers = require('./headersCORS');
+const axios = require('axios').default;
 
 const url = 'https://confident-bartik-aba02f.netlify.app/.netlify/functions/'
 
@@ -16,13 +17,10 @@ exports.handler = async (event, context) => {
     const channel = await rabbitPromise();
     let message = await channel.get("musicstore",{'noAck':true});
     while (message) {
-      const request = message.content;
-      console.log(request.method);
+      const request = JSON.parse(message.content.toString());
       switch (request.method) {
         case "INSERT":
-          await fetch(url+'insertTrackBatch', {
-            headers: {"Content-type": "multipart/form-data"},
-            method: "POST",body: request.body});
+          await axios.post(url+'insertTrackBatch', JSON.stringify(request.body));
           break;
       }
       message = await channel.get("musicstore",{'noAck':true});
