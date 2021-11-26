@@ -4,7 +4,7 @@ const rabbitPromise = require('./rabbitMQ');
 
 const headers = require('./headersCORS');
 
-const url = 'https://nervous-meitner-85e6fa.netlify.app/.netlify/functions/'
+const url = 'https://confident-bartik-aba02f.netlify.app/.netlify/functions/'
 
 exports.handler = async (event, context) => {
 
