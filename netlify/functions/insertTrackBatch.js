@@ -2,12 +2,14 @@
 
 const headers = require('./headersCORS');
 const { ObjectID, GridFSBucket } = require("mongodb");
-const { getConnection } = require("../database");
+const clientPromise = require('./mongoDB');
 const { Readable } = require('stream');
 const multer = require('multer');
 
 
 exports.handler = async (event, context) => {
+
+    const client = await clientPromise;
 
     if (event.httpMethod == "OPTIONS") {
         return { statusCode: 200, headers, body: "OK" };
@@ -39,7 +41,7 @@ exports.handler = async (event, context) => {
         readableTrackStream.push(event.file.buffer);
         readableTrackStream.push(null);
     
-        const db = getConnection();
+        const db = client.db('Proyecto2');
         let bucket = new GridFSBucket(db, {
           bucketName: 'Music'
         });
