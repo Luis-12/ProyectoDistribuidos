@@ -16,22 +16,12 @@ exports.handler = async (event, context) => {
     const channel = await rabbitPromise();
     let message = await channel.get("musicstore",{'noAck':true});
     while (message) {
-      const request = JSON.parse(message.content.toString());
+      const request = message.content;
       switch (request.method) {
-        case "DELETE":
-          await fetch(url+'bookDeleteBatch/'+request.id, {
-            method: "DELETE",
-            headers: {"Content-type": "application/json"}});
-          break;
-        case "UPDATE":
-          await fetch(url+'bookUpdateBatch/'+request.id, {
-            headers: {"Content-type": "application/json"},
-            method: "PUT", body: JSON.stringify(request.body)});
-          break;
         case "INSERT":
           await fetch(url+'insertTrackBatch', {
             headers: {"Content-type": "multipart/form-data"},
-            method: "POST",body: JSON.stringify(request.body)});
+            method: "POST",body: request.body});
           break;
       }
       message = await channel.get("musicstore",{'noAck':true});
