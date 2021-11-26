@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "mp3 file upload to mongo",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "build": "npm build"
   },
   "author": "",
   "license": "ISC",
