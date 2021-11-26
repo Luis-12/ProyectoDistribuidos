@@ -17,9 +17,9 @@ exports.handler = async (event, context) => {
     let message = await channel.get("musicstore",{'noAck':true});
     while (message) {
       const request = message.content;
+      console.log(request.method);
       switch (request.method) {
         case "INSERT":
-          console.log("message");
           await fetch(url+'insertTrackBatch', {
             headers: {"Content-type": "multipart/form-data"},
             method: "POST",body: request.body});
