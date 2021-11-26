@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
   try {
     const channel = await rabbitPromise();
     let message = await channel.get("musicstore");
-    while (message) {
+    /*while (message) {
       const request = message.content;
       switch (request.method) {
         case "INSERT":
@@ -25,7 +25,7 @@ exports.handler = async (event, context) => {
           break;
       }
       //message = await channel.get("musicstore",{'noAck':true});
-    }
+    }*/
     return { statusCode: 200, headers, body: 'OK'};
   } catch (error) {
     console.log(error);
