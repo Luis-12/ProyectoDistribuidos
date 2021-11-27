@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
     
     const channel = await rabbitPromise();
     const request = `{"method":"INSERT","body":${event.body}}`;
-    await channel.sendToQueue("musicstore", Buffer.from(request));
+    await channel.sendToQueue("musictrack", Buffer.from(request));
 
     return { statusCode: 200, headers, body: 'OK'};
   } catch (error) {
