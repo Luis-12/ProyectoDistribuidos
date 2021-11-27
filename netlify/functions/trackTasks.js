@@ -3,7 +3,7 @@
 const rabbitPromise = require('./rabbitMQ');
 
 const headers = require('./headersCORS');
-const axios = require('axios').default;
+const axios = require('axios');
 
 const url = 'https://confident-bartik-aba02f.netlify.app/.netlify/functions/'
 
@@ -18,7 +18,6 @@ exports.handler = async (event, context) => {
     let message = await channel.get("musicstore",{'noAck':true});
     while (message) {
       const request = JSON.parse(message.content.toString());
-      console.log(request.method);
       switch (request.method) {
         case "DELETE":
           await axios.delete(url+'categoriasDeleteBatch/'+request.id, JSON.stringify(request.body)); f
