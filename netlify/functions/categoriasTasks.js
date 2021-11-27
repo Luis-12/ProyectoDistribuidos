@@ -3,6 +3,7 @@
 const rabbitPromise = require('./rabbitMQ');
 
 const headers = require('./headersCORS');
+const axios = require('axios').default;
 
 const url = 'https://confident-bartik-aba02f.netlify.app/.netlify/functions/'
 
@@ -31,9 +32,7 @@ exports.handler = async (event, context) => {
           break;
         case "INSERT":
           console.log(JSON.stringify(request.body));
-          await fetch(url+'categoriasInsertBatch', {
-            headers: {"Content-type": "application/json"},
-            method: "POST",body: JSON.stringify(request.body)});
+          await axios.post(url+'categoriasInsertBatch', JSON.stringify(request.body));
           break;
       }
       message = await channel.get("musicstore",{'noAck':true});
