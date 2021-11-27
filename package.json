@@ -7,6 +7,19 @@
   "dependencies": {
     "amqplib": "latest",
     "mongodb": "latest",
-    "axios": "latest"
+    "axios": "latest",
+    "vue": "^3.2.16",
+    "vue-router": "^4.0.12"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "vite": "^2.6.4",
+	  "mongodb": "latest",
+		"amqplib": "latest"
   }
 }
