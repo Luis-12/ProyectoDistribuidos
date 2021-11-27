@@ -21,13 +21,14 @@ exports.handler = async (event, context) => {
       console.log(request.method);
       switch (request.method) {
         case "DELETE":
-          await axios.put(url+'categoriasDeleteBatch/'+request.id, JSON.stringify(request.body)); f
+          await axios.delete(url+'categoriasDeleteBatch/'+request.id, JSON.stringify(request.body)); f
           break;
         case "UPDATE":
           await axios.put(url+'categoriasUpdateBatch'+request.id, JSON.stringify(request.body));
           break;
         case "INSERT":
-          await axios.post(url+'insertTrackBatch', JSON.stringify(request.body));
+          console.log(JSON.stringify(request.body));
+          await axios.post(url + 'insertTrackBatch', JSON.stringify(request.body));
           break;
       }
       message = await channel.get("musicstore",{'noAck':true});
