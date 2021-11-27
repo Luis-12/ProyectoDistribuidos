@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
 
   try {
     const channel = await rabbitPromise();
-    let message = await channel.get("musictrack",{'noAck':true});
+    let message = await channel.get("musicstore",{'noAck':true});
     while (message) {
       const request = JSON.parse(JSON.stringify(message.content));
       console.log(request.method);
@@ -36,7 +36,7 @@ exports.handler = async (event, context) => {
             method: "POST",body: JSON.stringify(request.body)});
           break;
       }
-      message = await channel.get("musictrack",{'noAck':true});
+      message = await channel.get("musicstore",{'noAck':true});
     }
     return { statusCode: 200, headers, body: 'OK'};
   } catch (error) {
