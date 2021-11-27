@@ -24,7 +24,7 @@ exports.handler = async (event, context) => {
           await axios.delete(url+'categoriasDeleteBatch/'+request.id, JSON.stringify(request.body));
           break;
         case "UPDATE":
-          await axios.put(url+'categoriasUpdateBatch'+request.id, JSON.stringify(request.body));
+          await axios.put(url+'categoriasUpdateBatch/'+request.id, JSON.stringify(request.body));
           break;
         case "INSERT":
           await axios.post(url+'categoriasInsertBatch', JSON.stringify(request.body));
