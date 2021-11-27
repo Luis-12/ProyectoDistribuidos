@@ -20,10 +20,10 @@ exports.handler = async (event, context) => {
       const request = JSON.parse(message.content.toString());
       switch (request.method) {
         case "DELETE":
-          await axios.delete(url+'categoriasDeleteBatch/'+request.id, JSON.stringify(request.body)); f
+          await axios.delete(url+'deleteTaskBatch/'+request.id, JSON.stringify(request.body)); f
           break;
         case "UPDATE":
-          await axios.put(url+'categoriasUpdateBatch'+request.id, JSON.stringify(request.body));
+          await axios.put(url+'updateTaskBatch/'+request.id, JSON.stringify(request.body));
           break;
         case "INSERT":
           console.log(JSON.stringify(request.body));
