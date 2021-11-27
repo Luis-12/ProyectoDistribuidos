@@ -18,7 +18,14 @@ exports.handler = async (event, context) => {
     let message = await channel.get("musicstore",{'noAck':true});
     while (message) {
       const request = JSON.parse(message.content.toString());
+      console.log(request.method);
       switch (request.method) {
+        case "DELETE":
+          await axios.put(url+'categoriasDeleteBatch/'+request.id, JSON.stringify(request.body)); f
+          break;
+        case "UPDATE":
+          await axios.put(url+'categoriasUpdateBatch'+request.id, JSON.stringify(request.body));
+          break;
         case "INSERT":
           await axios.post(url+'insertTrackBatch', JSON.stringify(request.body));
           break;
