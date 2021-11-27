@@ -29,6 +29,7 @@ exports.handler = async (event, context) => {
             method: "PUT", body: JSON.stringify(request.body)});
           break;
         case "INSERT":
+          console.log(JSON.stringify(request.body));
           await fetch(url+'categoriasInsertBatch', {
             headers: {"Content-type": "application/json"},
             method: "POST",body: JSON.stringify(request.body)});
