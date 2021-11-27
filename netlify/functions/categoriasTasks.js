@@ -21,14 +21,10 @@ exports.handler = async (event, context) => {
       console.log(request.method);
       switch (request.method) {
         case "DELETE":
-          await fetch(url+'categoriasDeleteBatch/'+request.id, {
-            method: "DELETE",
-            headers: {"Content-type": "application/json"}});
+          await axios.put(url+'categoriasDeleteBatch/'+request.id, JSON.stringify(request.body)); f
           break;
         case "UPDATE":
-          await fetch(url+'categoriasUpdateBatch/'+request.id, {
-            headers: {"Content-type": "application/json"},
-            method: "PUT", body: JSON.stringify(request.body)});
+          await axios.put(url+'categoriasUpdateBatch'+request.id, JSON.stringify(request.body));
           break;
         case "INSERT":
           console.log(JSON.stringify(request.body));
