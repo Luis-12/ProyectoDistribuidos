@@ -16,7 +16,7 @@ exports.handler = async (event, context) => {
     const channel = await rabbitPromise();
     let message = await channel.get("musicstore",{'noAck':true});
     while (message) {
-      const request = JSON.parse(JSON.stringify(message.content));
+      const request = JSON.parse(message.content.toString());
       console.log(request.method);
       switch (request.method) {
         case "DELETE":
