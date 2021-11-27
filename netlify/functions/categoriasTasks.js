@@ -17,6 +17,7 @@ exports.handler = async (event, context) => {
     let message = await channel.get("musicstore",{'noAck':true});
     while (message) {
       const request = JSON.parse(JSON.stringify(message.content));
+      console.log(request.method);
       switch (request.method) {
         case "DELETE":
           await fetch(url+'categoriasDeleteBatch/'+request.id, {
