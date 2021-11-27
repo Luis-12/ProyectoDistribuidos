@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
     const id = parseInt(event.path.split("/").reverse()[0]);
 
     const channel = await rabbitPromise();
-    const request = `{'method':'UPDATEcategorias','id':${id},'body':${event.body}}`;
+    const request = `{'method':'UPDATE','id':${id},'body':${event.body}}`;
     await channel.sendToQueue("musicstore", Buffer.from(request));
 
     return { statusCode: 200, headers, body: 'OK'};

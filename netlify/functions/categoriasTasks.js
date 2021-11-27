@@ -18,17 +18,17 @@ exports.handler = async (event, context) => {
     while (message) {
       const request = JSON.parse(message.content.toString());
       switch (request.method) {
-        case "DELETEcategoria":
+        case "DELETE":
           await fetch(url+'categoriasDeleteBatch/'+request.id, {
             method: "DELETE",
             headers: {"Content-type": "application/json"}});
           break;
-        case "UPDATEcategoria":
+        case "UPDATE":
           await fetch(url+'categoriasUpdateBatch/'+request.id, {
             headers: {"Content-type": "application/json"},
             method: "PUT", body: JSON.stringify(request.body)});
           break;
-        case "INSERTcategoria":
+        case "INSERT":
           await fetch(url+'categoriasInsertBatch', {
             headers: {"Content-type": "application/json"},
             method: "POST",body: JSON.stringify(request.body)});
