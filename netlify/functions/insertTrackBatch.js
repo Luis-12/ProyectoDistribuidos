@@ -23,7 +23,7 @@ exports.handler = async (event, context) => {
 
       const mp3 = await db.collection('Music.files').findOne({ filename: data.fileName });
 
-      if (video) {
+      if (mp3) {
         return { statusCode: 422, headers, body: "The mp3 file exists." };
       }
 
