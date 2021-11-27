@@ -21,13 +21,12 @@ exports.handler = async (event, context) => {
       console.log(request.method);
       switch (request.method) {
         case "DELETE":
-          await axios.put(url+'categoriasDeleteBatch/'+request.id, JSON.stringify(request.body)); f
+          await axios.delete(url+'categoriasDeleteBatch/'+request.id, JSON.stringify(request.body));
           break;
         case "UPDATE":
-          await axios.put(url+'categoriasUpdateBatch'+request.id, JSON.stringify(request.body));
+          await axios.put(url+'categoriasUpdateBatch/'+request.id, JSON.stringify(request.body));
           break;
         case "INSERT":
-          console.log(JSON.stringify(request.body));
           await axios.post(url+'categoriasInsertBatch', JSON.stringify(request.body));
           break;
       }
