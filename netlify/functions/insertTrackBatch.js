@@ -1,10 +1,8 @@
 "use strict"
 
 const headers = require('./headersCORS');
-const { ObjectID, GridFSBucket } = require("mongodb");
+const { GridFSBucket } = require("mongodb");
 const clientPromise = require('./mongoDB');
-const { Readable } = require('stream');
-const multer = require('multer');
 const axios = require('axios').default;
 const path = require('path');
 
