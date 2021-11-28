@@ -16,6 +16,7 @@ exports.handler = async (event, context) => {
     const db = client.db('Proyecto2');
     const id = parseInt(event.path.split("/").reverse()[0]);
     console.log(id);
+    await client.db("Proyecto2").collection("musicData").deleteOne({_id:id});
     const orgData = await db.collection('musicData').findOne({ _id:id});
 
     console.log(orgData.fileName);
@@ -28,7 +29,6 @@ exports.handler = async (event, context) => {
 
     //bucket.delete(file._id);
 
-    await client.db("Proyecto2").collection("musicData").deleteOne({_id:id});
 
     return { statusCode: 200, headers, body: 'OK' };
   } catch (error) {
