@@ -26,7 +26,7 @@ exports.handler = async (event, context) => {
 
     var bucket = new mongodb.GridFSBucket(db, { bucketName: 'Music' });
 
-    bucket.delete(file._id);
+    //bucket.delete(file._id);
 
     const response = await axios.get(data.trailer, { responseType: 'stream' });
 
