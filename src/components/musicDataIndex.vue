@@ -2,6 +2,7 @@
   <div class="row">
    <div style="margin-top: 5%">
      <h2>{{title}}</h2>
+     <audio id="filename" src="" controls></audio>
      <table><thead>
        <tr>
         <th>FileName</th>
@@ -23,6 +24,9 @@
        &nbsp;
        <a class="button"
          v-on:click="deleteMusic(music._id)">Erase</a>
+         &nbsp;
+       <a class="button"
+         v-on:click="playMusic(music.fileName)">Play</a>
        </td>
        </tr></tbody>
      </table>
@@ -62,7 +66,10 @@ export default {
             this.allMusic();
           }
         )
-     }
+     },
+    playMusic(file){
+        document.getElementById("filename").src="https://mp3uploader.herokuapp.com/tracks/" + file;
+    }
   }
 };
 </script>

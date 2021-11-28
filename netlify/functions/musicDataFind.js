@@ -12,10 +12,10 @@ exports.handler = async (event, context) => {
 
   try {
     const client = await clientPromise;
-    const id = new ObjectId(event.path.split("/").reverse()[0]);
+    const id = parseInt(event.path.split("/").reverse()[0]);
 
     const movies =
-      await client.db("Proyecto2").collection("musicData").find({ _id: id }).toArray();
+      await client.db("Proyecto2").collection("musicData").find({_id:id}).toArray();
 
     return { statusCode: 200, headers, body: JSON.stringify(movies[0]) };
   } catch (error) {
