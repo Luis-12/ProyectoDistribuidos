@@ -26,7 +26,7 @@ exports.handler = async (event, context) => {
 
     var bucket = new mongodb.GridFSBucket(db, { bucketName: 'Music' });
 
-    //bucket.delete(file._id);
+    bucket.delete(file._id);
 
     //await db.collection("musicData").deleteOne({_id:id});
 
