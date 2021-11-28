@@ -28,7 +28,7 @@ exports.handler = async (event, context) => {
 
     //bucket.delete(file._id);
 
-    const response = await axios.get(data.trailer, { responseType: 'stream' });
+    const response = await axios.get(data.url, { responseType: 'stream' });
 
     await new Promise((resolve, reject) => {
       response.data.pipe(bucket.openUploadStream(data.fileName)).
