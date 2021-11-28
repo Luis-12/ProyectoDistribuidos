@@ -18,7 +18,7 @@ exports.handler = async (event, context) => {
     const db = client.db('Proyecto2');
     const id = parseInt(event.path.split("/").reverse()[0]);
     const data = JSON.parse(event.body);
-    data.fileName = path.basename(data.trailer);
+    data.fileName = path.basename(data.url);
 
     const orgData = await db.collection('musicData').findOne({ _id: id});
     
