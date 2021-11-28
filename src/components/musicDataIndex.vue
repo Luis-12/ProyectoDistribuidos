@@ -17,9 +17,6 @@
        <td>{{music.categoria.name}}</td>
        <td>
        <router-link class="button"
-         :to="'/musicData/show/'+music._id">Show</router-link>
-       &nbsp;
-       <router-link class="button"
          :to="'/musicData/edit/'+music._id">Edit</router-link>
        &nbsp;
        <a class="button"
