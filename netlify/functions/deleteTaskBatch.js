@@ -18,7 +18,12 @@ exports.handler = async (event, context) => {
 
     const orgData = await db.collection('musicData').findOne({ _id: id});
 
+    console.log(id);
+    console.log(orgData.fileName);
+
     const file = await db.collection('Music.files').findOne({ filename: orgData.fileName });
+
+    console.log(file._id);
 
     var bucket = new mongodb.GridFSBucket(db, { bucketName: 'Music' });
 
