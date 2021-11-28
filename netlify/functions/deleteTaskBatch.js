@@ -15,21 +15,20 @@ exports.handler = async (event, context) => {
     const client = await clientPromise;
     const db = client.db('Proyecto2');
     const id = parseInt(event.path.split("/").reverse()[0]);
-
-    const orgData = await db.collection('musicData').findOne({ _id: id});
-
     console.log(id);
+    const orgData = await db.collection('musicData').findOne({ _id:id});
+
     console.log(orgData.fileName);
 
     const file = await db.collection('Music.files').findOne({ filename: orgData.fileName });
 
     console.log(file._id);
 
-    var bucket = new mongodb.GridFSBucket(db, { bucketName: 'Music' });
+    //var bucket = new mongodb.GridFSBucket(db, { bucketName: 'Music' });
 
-    bucket.delete(file._id);
+    //bucket.delete(file._id);
 
-    await db.collection("musicData").deleteOne({ _id: id });
+    //await db.collection("musicData").deleteOne({_id:id});
 
     return { statusCode: 200, headers, body: 'OK' };
   } catch (error) {
